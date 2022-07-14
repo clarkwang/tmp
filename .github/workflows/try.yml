@@ -27,13 +27,13 @@ jobs:
 
       - shell: bash
         run: |
-          echo pid=$$
-          pwd
-          date > /tmp/myfile
+          echo 'alias l="ls -l"' >> ~/.bashrc
+          cat ~/.bashrc
 
       - shell: bash
         run: |
-          echo pid=$$
-          pwd
-          ls -l /tmp/
-          cat /tmp/myfile
+          cat ~/.bashrc
+          shopt -s expand_aliases
+          source ~/.bashrc
+          shopt -s expand_aliases
+          alias l
