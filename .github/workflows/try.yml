@@ -32,9 +32,9 @@ jobs:
           FOO:
             k1: v1
             k2: v2
-          BAR:
-            - apple
-            - banana
+        # BAR:
+        #   - apple
+        #   - banana
         run: |
           declare -p FOO
           declare -p BAR
