@@ -36,6 +36,7 @@ jobs:
         #   - apple
         #   - banana
         run: |
+          declare -p BASH_VERSION
           declare -p FOO
           true
 
