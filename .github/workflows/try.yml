@@ -29,7 +29,7 @@ jobs:
       - name: Run a one-line script
         shell: bash
         env:
-          FOO:
+          FOO: |
             k1: v1
             k2: v2
         # BAR:
