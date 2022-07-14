@@ -27,13 +27,11 @@ jobs:
 
       - shell: bash
         run: |
-          echo 'alias l="ls -l"' >> ~/.bashrc
-          cat ~/.bashrc
+          rc=/tmp/rcfile
+          echo 'shopt -s expand_aliases' > $rc
+          echo 'alias ll="ls -l"' >> $rc
 
       - shell: bash
         run: |
-          cat ~/.bashrc
-          shopt -s expand_aliases
-          source ~/.bashrc
-          shopt -s expand_aliases
-          alias l
+          source /tmp/rcfile
+          ll
