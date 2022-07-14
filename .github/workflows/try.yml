@@ -28,9 +28,11 @@ jobs:
       - shell: bash
         run: |
           echo pid=$$
-          { pwd; } > /tmp/myfile
+          pwd
+          date > /tmp/myfile
 
       - shell: bash
         run: |
           echo pid=$$
+          pwd
           cat /tmp/myfile
