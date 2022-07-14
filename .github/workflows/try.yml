@@ -35,4 +35,5 @@ jobs:
         run: |
           echo pid=$$
           pwd
+          ls -l /tmp/
           cat /tmp/myfile
