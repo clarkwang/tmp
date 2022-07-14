@@ -37,6 +37,7 @@ jobs:
         #   - banana
         run: |
           declare -p BASH_VERSION
+          declare -p XXX
           declare -p FOO
           true
 
