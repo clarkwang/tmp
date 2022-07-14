@@ -37,7 +37,6 @@ jobs:
         #   - banana
         run: |
           declare -p FOO
-          declare -p BAR
           true
 
       # Runs a set of commands using the runners shell
