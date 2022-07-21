@@ -27,12 +27,9 @@ jobs:
 
       - shell: bash
         run: |
-          cat > /tmp/rcfile << 'END'
-          shopt -s expand_aliases
-          alias ll="ls -l"
-          END
+          false
+          true
 
       - shell: bash
         run: |
-          source /tmp/rcfile
-          ll /
+          true
