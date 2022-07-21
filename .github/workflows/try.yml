@@ -42,13 +42,14 @@ jobs:
           run 'ps p$$ uww'
           true
 
-      - name: where-am-i
+      - name: get-env-info
         shell: bash {0}
         run: |
           info() { printf '++ %s\n' "$*"; }
           run()  { info "$*"; eval "$*"; }
 
           run uname -a
+          run tty
           run 'echo $0'
           run pwd
           run whoami 
@@ -56,6 +57,8 @@ jobs:
           run 'which grep | xargs ls -l'
           run ps
           run 'ps p$$ uw'
+          run 'ps p$$ j'
+          run ps p1 uw
 
           run 'ls -l /etc/*release'
           run cat /etc/lsb-release
