@@ -25,14 +25,24 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
+      - name: default-shell
+        run: |
+          set +e +o pipefail
+
+          info() { printf '++ %s\n' "$*"; }
+          run()  { info "$*"; eval "$*"; }
+
+          run 'ps p$$ uww'
+          true
+
       - name: where-am-i
         shell: bash {0}
         run: |
           info() { printf '++ %s\n' "$*"; }
           run()  { info "$*"; eval "$*"; }
 
-          run 'echo $0'
           run uname -a
+          run 'echo $0'
           run pwd
           run whoami 
           run free
@@ -43,7 +53,8 @@ jobs:
           run 'ls -l /etc/*release'
           run cat /etc/lsb-release
 
-          run ps axuw
+          run pstree
+          #run ps axuw
           run env
 
           true
