@@ -27,8 +27,6 @@ jobs:
 
       - name: default-shell
         run: |
-          set +e +o pipefail
-
           info() { printf '++ %s\n' "$*"; }
           run()  { info "$*"; eval "$*"; }
 
