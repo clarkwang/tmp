@@ -32,10 +32,18 @@ jobs:
           run()  { info "$*"; eval "$*"; }
 
           run 'echo $0'
-          run 'ls -l /etc/*release'
           run uname -a
           run pwd
           run whoami 
+          run free
+          run 'which grep | xargs ls -l'
+          run ps
+          run 'ps p$$ uw'
+
+          run 'ls -l /etc/*release'
+          run cat /etc/lsb-release
+
+          run ps axuw
           run env
 
           true
