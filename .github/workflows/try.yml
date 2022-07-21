@@ -33,6 +33,15 @@ jobs:
           run 'ps p$$ uww'
           true
 
+      - name: explicit-bash
+        shell: bash
+        run: |
+          info() { printf '++ %s\n' "$*"; }
+          run()  { info "$*"; eval "$*"; }
+
+          run 'ps p$$ uww'
+          true
+
       - name: where-am-i
         shell: bash {0}
         run: |
