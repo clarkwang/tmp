@@ -27,6 +27,7 @@ jobs:
 
       - shell: bash
         run: |
+          set +e
           false
           true
 
