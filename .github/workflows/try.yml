@@ -52,6 +52,7 @@ jobs:
           run tty
           run 'echo $0'
           run pwd
+          run ls -al
           run whoami 
           run free
           run 'which grep | xargs ls -l'
