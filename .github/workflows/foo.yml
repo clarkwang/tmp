@@ -1,0 +1,50 @@
+# vi:set ts=4 sw=2:
+
+name: CI
+
+on:
+  push:
+    branches:
+      - multi-yaml-files
+  pull_request:
+    branches:
+      - multi-yaml-files
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      - name: get-env-info
+        shell: bash {0}
+        run: |
+          . ./actions/common.sh
+
+          run tty
+          run pwd
+          run ls -al
+          run whoami 
+          run 'echo $0'
+          run 'ps p$$ uw'
+
+          run uname -a
+          run 'ls -l /etc/*release'
+          run cat /etc/lsb-release
+          run free
+
+          run df -h
+          run mount
+
+          run ps
+          run 'ps p$$ j'
+          run ps p1 uw
+          run pstree
+
+          #run ps axuw
+          run env

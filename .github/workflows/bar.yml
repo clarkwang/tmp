@@ -5,10 +5,10 @@ name: CI
 on:
   push:
     branches:
-      - shell-env
+      - multi-yaml-files
   pull_request:
     branches:
-      - shell-env
+      - multi-yaml-files
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -21,28 +21,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      #
-      # If `shell:' is not explicitly specified, it'll use `bash -e'.
-      #
-      - name: default-shell
-        run: |
-          . ./actions/common.sh
-          run 'ps p$$ uw'
-
-      #
-      # If `shell: bash' is specified, it'll use
-      # `bash --noprofile --norc -e -o pipefail'.
-      #
-      - name: explicit-bash
-        shell: bash
-        run: |
-          . ./actions/common.sh
-          run 'ps p$$ uw'
-
-      #
-      # If `shell: bash {0}' is specified, it'll simply use `bash' without
-      # adding any extra options.
-      #
       - name: get-env-info
         shell: bash {0}
         run: |
