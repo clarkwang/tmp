@@ -56,6 +56,8 @@ jobs:
           run whoami 
           run free
           run 'which grep | xargs ls -l'
+          run df -h
+          run mount
           run ps
           run 'ps p$$ uw'
           run 'ps p$$ j'
