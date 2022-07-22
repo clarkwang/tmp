@@ -73,12 +73,14 @@ jobs:
         id: id-001
         shell: bash {0}
         env:
+          _ID:    ${{ steps.id-001 }}
           _NAME:  ${{ steps.id-001.name }}
           _SHELL: ${{ steps.id-001.shell }}
         run: |
           . ./actions/common.sh
 
-          run echo "${{ steps.id-001.shell }}"
+          run echo "${{ steps.id-001 }}"
+          run 'echo "$_ID" '
           run 'echo "$_NAME" '
           run 'echo "$_SHELL" '
 
