@@ -27,8 +27,7 @@ jobs:
 
       - name: default-shell
         run: |
-          info() { printf '++ %s\n' "$*"; }
-          run()  { info "$*"; eval "$*"; }
+          . ./actions/common.sh
 
           run 'ps p$$ uww'
           true
@@ -36,8 +35,7 @@ jobs:
       - name: explicit-bash
         shell: bash
         run: |
-          info() { printf '++ %s\n' "$*"; }
-          run()  { info "$*"; eval "$*"; }
+          . ./actions/common.sh
 
           run 'ps p$$ uww'
           true
@@ -45,8 +43,7 @@ jobs:
       - name: get-env-info
         shell: bash {0}
         run: |
-          info() { printf '++ %s\n' "$*"; }
-          run()  { info "$*"; eval "$*"; }
+          . ./actions/common.sh
 
           run uname -a
           run tty
