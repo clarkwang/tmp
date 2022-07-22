@@ -73,8 +73,8 @@ jobs:
         id: id-001
         shell: bash {0}
         env:
-          _NAME: ${{ name }}
-          _SHELL: ${{ shell }}
+          _NAME:  ${{ steps.id-001.name }}
+          _SHELL: ${{ steps.id-001.shell }}
         run: |
           . ./actions/common.sh
 
