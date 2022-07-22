@@ -29,42 +29,39 @@ jobs:
         run: |
           . ./actions/common.sh
 
-          run 'ps p$$ uww'
-          true
+          run 'ps p$$ uw'
 
       - name: explicit-bash
         shell: bash
         run: |
           . ./actions/common.sh
 
-          run 'ps p$$ uww'
-          true
+          run 'ps p$$ uw'
 
       - name: get-env-info
         shell: bash {0}
         run: |
           . ./actions/common.sh
 
-          run uname -a
           run tty
-          run 'echo $0'
           run pwd
           run ls -al
           run whoami 
-          run free
-          run 'which grep | xargs ls -l'
-          run df -h
-          run mount
-          run ps
+          run 'echo $0'
           run 'ps p$$ uw'
-          run 'ps p$$ j'
-          run ps p1 uw
 
+          run uname -a
           run 'ls -l /etc/*release'
           run cat /etc/lsb-release
+          run free
 
+          run df -h
+          run mount
+
+          run ps
+          run 'ps p$$ j'
+          run ps p1 uw
           run pstree
+
           #run ps axuw
           run env
-
-          true
