@@ -4,9 +4,10 @@ name: CI
 
 on:
   push:
-    branches: [ actions ]
+    branches:
+      - shell-env
   pull_request:
-    branches: [ actions ]
+      - shell-env
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
