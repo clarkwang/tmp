@@ -68,7 +68,7 @@ jobs:
           #echo 'versions_compact=${{ steps.step-1.outputs.versions_pretty }}'
   job2:
     runs-on: ubuntu-latest
-    needs: job1
+    needs: build
     steps:
       - id: step-1
         shell: bash {0}
