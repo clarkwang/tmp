@@ -27,9 +27,14 @@ jobs:
           . ./actions/common.sh
           run echo "::echo::on"
 
-          VERSIONS_JSON=$( echo ' "1.10.31" "1.11.1" ' | jq -s -c )
-          run declare -p VERSIONS_JSON
-          run 'echo "::set-output name=VERSIONS_JSON::$VERSIONS_JSON" '
+          versions_pretty=$(  echo ' "1.10.31" "1.11.1" ' | jq -s    )
+          versions_compact=$( echo ' "1.10.31" "1.11.1" ' | jq -s -c )
+
+          run declare -p versions_pretty
+          run declare -p versions_compact
+
+          run 'echo "::set-output name=versions_compact::$versions_compact" '
+          run 'echo "::set-output name=versions_pretty::$versions_pretty" '
 
       - id: step-2
         shell: bash {0}
@@ -37,4 +42,23 @@ jobs:
           . ./actions/common.sh
           run echo "::echo::on"
 
-          run 'echo "VERSIONS_JSON=${{ steps.step-1.outputs.VERSIONS_JSON }}" '
+          set -x
+
+          cat << 'END'
+          ---- versions_compact
+          ${{ steps.step-1.outputs.versions_compact }}
+          ---- "versions_compact"
+          "${{ steps.step-1.outputs.versions_compact }}"
+          ---- 'versions_compact'
+          '${{ steps.step-1.outputs.versions_compact }}'
+          ---- versions_pretty
+          ${{ steps.step-1.outputs.versions_pretty }}
+          ---- "versions_pretty"
+          "${{ steps.step-1.outputs.versions_pretty }}"
+          ---- 'versions_pretty'
+          '${{ steps.step-1.outputs.versions_pretty }}'
+          ----
+          END
+
+          #echo 'versions_compact=${{ steps.step-1.outputs.versions_compact }}'
+          #echo 'versions_compact=${{ steps.step-1.outputs.versions_pretty }}'
