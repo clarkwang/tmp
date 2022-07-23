@@ -70,7 +70,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     strategy:
-      maxtrix:
+      matrix:
         versions: ${{ fromJSON(needs.build.outputs.versions_compact) }}
     steps:
       - id: step-1
