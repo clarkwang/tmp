@@ -73,11 +73,10 @@ jobs:
       - id: step-1
         shell: bash {0}
         run: |
-          . ./actions/common.sh
           echo "::echo::on"
 
           cat << 'END'
-          ${{ needs.job1.outputs.versions_compact }}
+          ${{ needs.build.outputs.versions_compact }}
           ----
-          ${{ needs.job1.outputs.versions_pretty }}
+          ${{ needs.build.outputs.versions_pretty }}
           END
