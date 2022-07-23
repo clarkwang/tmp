@@ -17,6 +17,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    outputs:
+      versions_compact: ${{ steps.step-1.outputs.versions_compact }}
+      versions_pretty:  ${{ steps.step-1.outputs.versions_pretty }}
+
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
@@ -25,7 +29,7 @@ jobs:
         shell: bash {0}
         run: |
           . ./actions/common.sh
-          run echo "::echo::on"
+          echo "::echo::on"
 
           versions_pretty=$(  echo ' "1.10.31" "1.11.1" ' | jq -s    )
           versions_compact=$( echo ' "1.10.31" "1.11.1" ' | jq -s -c )
@@ -37,10 +41,11 @@ jobs:
           run 'echo "::set-output name=versions_pretty::$versions_pretty" '
 
       - id: step-2
+        needs: step-1
         shell: bash {0}
         run: |
           . ./actions/common.sh
-          run echo "::echo::on"
+          echo "::echo::on"
 
           set -x
 
@@ -62,3 +67,18 @@ jobs:
 
           #echo 'versions_compact=${{ steps.step-1.outputs.versions_compact }}'
           #echo 'versions_compact=${{ steps.step-1.outputs.versions_pretty }}'
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - id: step-1
+        shell: bash {0}
+        run: |
+          . ./actions/common.sh
+          echo "::echo::on"
+
+          cat << 'END'
+          ${{ needs.job1.outputs.versions_compact }}
+          ----
+          ${{ needs.job1.outputs.versions_pretty }}
+          END
