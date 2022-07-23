@@ -41,7 +41,6 @@ jobs:
           run 'echo "::set-output name=versions_pretty::$versions_pretty" '
 
       - id: step-2
-        needs: step-1
         shell: bash {0}
         run: |
           . ./actions/common.sh
