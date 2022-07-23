@@ -25,7 +25,8 @@ jobs:
         shell: bash {0}
         run: |
           . ./actions/common.sh
+          echo "::echo::on"
 
           VERSIONS_JSON=$( echo ' "1.10.31" "1.11.1" ' | jq -s )
           run declare -p VERSIONS_JSON
-          run 'echo "::set-output name=VERSIONS_JSON::$VERSIONS_JSON" '
+          echo "::set-output name=VERSIONS_JSON::$VERSIONS_JSON"
