@@ -49,6 +49,7 @@ jobs:
           . ./actions/common.sh
 
           run tty
+          run 'echo $BASH_VERSION'
           run pwd
           run ls -al
           run whoami 
